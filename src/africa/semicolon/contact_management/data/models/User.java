@@ -5,18 +5,25 @@ import java.util.List;
 
 public class User {
     private int id;
-    private String name;
+    private String fullName;
     private String address;
     private String phoneNumber;
     private String email;
     private List<Contact> contacts = new ArrayList<>();
+    private String password;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public User() {
         this.contacts = new ArrayList<>();
     }
-    public List<Contact> getContacts(){
-        return contacts;
-    }
+
 
     public int getId() {
         return id;
@@ -27,11 +34,11 @@ public class User {
     }
 
     public String getName() {
-        return name;
+        return fullName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getAddress() {
