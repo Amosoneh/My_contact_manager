@@ -12,6 +12,11 @@ public class UserRepositoryImp implements UserRepository{
 
     @Override
     public User save(User user) {
+        for (User myUser: userLists){
+            if (myUser.getId() == user.getId()){
+                return user;
+            }
+        }
         counter++;
         user.setId(counter);
         userLists.add(user);
@@ -36,6 +41,16 @@ public class UserRepositoryImp implements UserRepository{
     @Override
     public int count() {
         return userLists.size();
+    }
+
+    @Override
+    public User findByEmail(String email) {
+        for (User user: userLists){
+            if (user.getEmail().equalsIgnoreCase(email)){
+                return user;
+            }
+        }
+        return null;
     }
 
 //    @Override
