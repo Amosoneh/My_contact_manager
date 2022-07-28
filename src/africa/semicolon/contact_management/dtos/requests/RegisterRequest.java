@@ -4,6 +4,7 @@ public class RegisterRequest {
     private String fullName;
     private String address;
     private String phoneNumber;
+    private String password;
 
     public String getFullName() {
         return fullName;
@@ -38,4 +39,8 @@ public class RegisterRequest {
     }
 
     private String email;
+
+    public void setPassword(String enter_password) {
+        this.password = password;
+    }
 }

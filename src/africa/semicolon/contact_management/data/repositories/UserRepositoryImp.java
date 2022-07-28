@@ -1,6 +1,6 @@
 package africa.semicolon.contact_management.data.repositories;
 
-import africa.semicolon.contact_management.data.models.Contact;
+//import africa.semicolon.contact_management.data.models.Contact;
 import africa.semicolon.contact_management.data.models.User;
 
 import java.util.ArrayList;
