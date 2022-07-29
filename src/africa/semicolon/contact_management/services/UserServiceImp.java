@@ -52,10 +52,7 @@ public class UserServiceImp implements UserService{
         // add contact to user contact list
         // save user
         Contact contact = new Contact();
-        contact.setLastName(request.getLastName());
-        contact.setEmail(request.getEmail());
-        contact.setPhoneNumber(request.getPhone());
-        contact.setFirstName(request.getFirstName());
+        Mapper.map(request, contact);
 
         Contact savedContact = contactService.addNewContact(contact);
 

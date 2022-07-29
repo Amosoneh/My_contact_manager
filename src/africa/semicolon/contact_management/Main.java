@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class Main {
     private static final Scanner input = new Scanner(System.in);
-    private static UserController userController = new UserController();
+    private static final UserController userController = new UserController();
     public static void main(String[] args) {
         displayMenu();
     }
@@ -22,12 +22,10 @@ public class Main {
                 """;
 
         String userInput = input(mainMenuPrompt);
-        switch (userInput.charAt(0)){
-            case '1': createAccount();
-            break;
-            case '2': AddContactToUser();
-            break;
-            case '3': findContactBelongingToUser();
+        switch (userInput.charAt(0)) {
+            case '1' -> createAccount();
+            case '2' -> AddContactToUser();
+            case '3' -> findContactBelongingToUser();
         }
     }
 
@@ -42,9 +40,9 @@ public class Main {
 
     private static void AddContactToUser() {
         AddContactRequest request = new AddContactRequest();
-        request.setPhone(input("Enter phone number"));
-        request.setLastName(input("Enter last name"));
         request.setFirstName(input("Enter first name"));
+        request.setLastName(input("Enter last name"));
+        request.setPhone(input("Enter phone number"));
         request.setEmail(input("Enter contact email"));
         request.setUserEmail(input("Enter your email"));
         userController.addContact(request);
