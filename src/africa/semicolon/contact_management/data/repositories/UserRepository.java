@@ -9,6 +9,8 @@ public interface UserRepository {
     void delete(int id);
 
     int count();
+
+    User findByEmail(String email);
 //    Contact addContact(Contact contact);
 //    void deleteContact(Contact contact);
 //    void deleteContact(int id);
