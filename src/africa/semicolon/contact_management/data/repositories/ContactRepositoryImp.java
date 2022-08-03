@@ -16,9 +16,9 @@ public class ContactRepositoryImp implements ContactRepository{
                 return myContact;
             }
         }
-        counter++;
         contact.setId(counter);
         contacts.add(contact);
+        counter++;
         return contact;
     }
 
