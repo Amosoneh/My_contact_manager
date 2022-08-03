@@ -9,10 +9,12 @@ import africa.semicolon.contact_management.data.repositories.UserRepositoryImp;
 import africa.semicolon.contact_management.dtos.requests.AddContactRequest;
 import africa.semicolon.contact_management.dtos.requests.RegisterRequest;
 import africa.semicolon.contact_management.dtos.response.AddContactResponse;
+import africa.semicolon.contact_management.dtos.response.AllContactResponse;
 import africa.semicolon.contact_management.dtos.response.RegisterResponse;
 import africa.semicolon.contact_management.exceptions.UserExistsException;
 import africa.semicolon.contact_management.utils.Mapper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserServiceImp implements UserService{
@@ -35,7 +37,7 @@ public class UserServiceImp implements UserService{
         Mapper.map(request, user);
         userRepository.save(user);
         RegisterResponse response = new RegisterResponse();
-        response.setMessage("Registration Successful");
+        response.setMessage(String.format("%s Registration Successful", request.getEmail()));
         return response;
     }
 
@@ -61,9 +63,11 @@ public class UserServiceImp implements UserService{
         user.getContacts().add(savedContact);
 
         userRepository.save(user);
+        AddContactResponse response = new AddContactResponse();
+        response.setMessage(String.format("%s successfully added", request.getFirstName()));
 
 
-        return null;
+        return response;
     }
 
     @Override
@@ -72,8 +76,15 @@ public class UserServiceImp implements UserService{
     }
 
     @Override
-    public List<Contact> findContactsBelongingTo(String userEmail) {
+    public List<AllContactResponse> findContactsBelongingTo(String userEmail) {
         User user  = userRepository.findByEmail(userEmail);
-        return user.getContacts();
+        List<Contact> allUserContact = user.getContacts();
+        List<AllContactResponse> response = new ArrayList<>();
+        for (var contact: allUserContact){
+            AllContactResponse singleResponse = new AllContactResponse();
+            Mapper.map(contact, singleResponse);
+            response.add(singleResponse);
+        }
+        return response;
     }
 }

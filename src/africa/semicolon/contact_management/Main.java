@@ -3,14 +3,17 @@ package africa.semicolon.contact_management;
 import africa.semicolon.contact_management.controllers.UserController;
 import africa.semicolon.contact_management.dtos.requests.AddContactRequest;
 import africa.semicolon.contact_management.dtos.requests.RegisterRequest;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.Scanner;
-
+@SpringBootApplication
 public class Main {
     private static final Scanner input = new Scanner(System.in);
     private static final UserController userController = new UserController();
     public static void main(String[] args) {
-        displayMenu();
+        SpringApplication.run(Main.class, args);
+//        displayMenu();
     }
 
     private static void displayMenu() {

@@ -15,7 +15,6 @@ public class User {
     private String address;
     private String phoneNumber;
     private String email;
-    @Setter
     private String password;
     private List<Contact> contacts = new ArrayList<>();
 
